@@ -34,7 +34,7 @@ same scikit-learn version.
 ```bash
 python3.13 -m venv .venv313
 source .venv313/bin/activate
-python -m pip install -r requirements-app.txt
+python -m pip install -r requirements.txt
 python -m streamlit run app.py
 ```
 
@@ -42,12 +42,12 @@ Then open the local URL printed by Streamlit, usually <http://localhost:8501>.
 
 ## Train the model
 
-Training also requires Java 17 or 21 and the full requirements file, which adds
+Training also requires Java 17 or 21 and `requirements-training.txt`, which adds
 PySpark and Matplotlib. Dataset regeneration is optional and overwrites the
 bundled CSV:
 
 ```bash
-python -m pip install -r requirements.txt
+python -m pip install -r requirements-training.txt
 python model_training.py
 ```
 
@@ -61,3 +61,18 @@ python generate_dataset.py
 The model file is stored with Git LFS because it exceeds GitHub's regular file
 size limit. Install Git LFS before cloning so the model is downloaded along
 with the source files.
+
+## Deploy on Streamlit Community Cloud
+
+After the project is pushed to GitHub:
+
+1. Connect your GitHub account at <https://share.streamlit.io/>.
+2. Create an app using repository `AditiJogad/Food-preservation`, branch
+   `main`, and entrypoint `app.py`.
+3. In Advanced settings, select Python 3.13 to match the saved model's
+   scikit-learn version.
+4. Deploy. Community Cloud installs the app dependencies from the root
+   `requirements.txt`; training-only PySpark is kept in
+   `requirements-training.txt`.
+
+The saved model uses Git LFS, which Streamlit Community Cloud supports.

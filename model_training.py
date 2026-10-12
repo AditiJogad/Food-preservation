@@ -5,7 +5,7 @@ records and estimates preservation outcomes from simulated conditions.
 
 Run from this directory: .venv313/bin/python model_training.py
 PySpark is required for ingestion, validation, summaries, and feature selection.
-Requires Java 17 or 21 and the full requirements.txt dependency set.
+Requires Java 17 or 21 and the requirements-training.txt dependency set.
 Scikit-learn trains the classification pipelines on the Spark-prepared inputs.
 The full dataset is collected into local memory, appropriate for this project size.
 Outputs: food_preservation_model.pkl, model_evaluation_report.csv, and four PNGs.
